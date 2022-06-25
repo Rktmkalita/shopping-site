@@ -16,13 +16,24 @@ export class CartService {
     return this.productList.asObservable();
   }
 
-  setProduct(product: any) {
-    this.cartList.push(...product);
-    this.productList.next(product);
-  }
+  // setProduct(product: any) {
+  //   this.cartList.push(...product);
+  //   this.productList.next(product);
+  // }
 
   addToCart(product: any) {
-    this.cartList.push(product);
+    let flag = 1;
+    this.cartList.forEach((prd: any) => {
+      if (product.id == prd.id) {
+        prd.quantity++;
+        prd.total = prd.price * prd.quantity;
+        flag = 0;
+      }
+    });
+    if (flag == 1) {
+      this.cartList.push(product);
+    }
+
     this.productList.next(this.cartList);
     this.getGrandTotal();
   }
