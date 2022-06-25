@@ -23,9 +23,9 @@
                 <img style="width: 120px" src="{{ item.image }}" alt="" />
               </td>
               <td style="width: 25%">{{ item.description }}</td>
-              <td style="width: 12%">{{ item.price }}</td>
+              <td style="width: 12%">${{ item.price }}</td>
               <td style="width: 12%">{{ item.quantity }}</td>
-              <td style="width: 12%">{{ item.total }}</td>
+              <td style="width: 12%">${{ item.total }}</td>
               <td>
                 <button class="btn btn-danger" (click)="deleteItem(item)">
                   <i class="fas fa-trash-alt"></i>
@@ -46,7 +46,7 @@
               </td>
               <td><button class="btn btn-success">Checkout</button></td>
               <td>
-                <strong>Grand Total: {{ grandTotal }}</strong>
+                <strong>Grand Total: ${{ grandTotal }}</strong>
               </td>
             </tr>
           </tbody>

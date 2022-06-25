@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
   public cartItems: any = [];
-  public grandTotal: number = 0;
+  public grandTotal: any = 0;
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.getProducts().subscribe((a) => {
       this.cartItems = a;
-      this.grandTotal = this.cartService.getGrandTotal();
+      this.grandTotal = this.cartService.getGrandTotal().toFixed(2);
     });
   }
 

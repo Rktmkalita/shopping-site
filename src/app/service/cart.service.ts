@@ -16,11 +16,6 @@ export class CartService {
     return this.productList.asObservable();
   }
 
-  // setProduct(product: any) {
-  //   this.cartList.push(...product);
-  //   this.productList.next(product);
-  // }
-
   addToCart(product: any) {
     let flag = 1;
     this.cartList.forEach((prd: any) => {
