@@ -7,7 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  public cartItems: any = [];
+  public grandTotal: number = 0;
   constructor(private cartService: CartService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cartService.getProducts().subscribe((a) => {
+      this.cartItems = a;
+      this.grandTotal = this.cartService.getGrandTotal();
+    });
+  }
+
+  deleteItem(item: any) {
+    this.cartService.removeCartItem(item);
+  }
+
+  emptyCart() {
+    this.cartService.emptyCart();
+  }
 }

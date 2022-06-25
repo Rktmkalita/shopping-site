@@ -23,7 +23,6 @@ export class CartService {
     this.cartList.push(product);
     this.productList.next(this.cartList);
     this.getGrandTotal();
-    console.log(this.cartList);
   }
 
   getGrandTotal() {
@@ -31,6 +30,7 @@ export class CartService {
     this.cartList.map((prd: any) => {
       grandTotal += prd.total;
     });
+    return grandTotal;
   }
 
   removeCartItem(product: any) {
@@ -39,6 +39,7 @@ export class CartService {
         this.cartList.splice(index, 1);
       }
     });
+    this.productList.next(this.cartList);
   }
 
   emptyCart() {

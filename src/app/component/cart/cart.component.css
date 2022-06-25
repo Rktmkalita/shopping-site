@@ -28,6 +28,7 @@ h6 {
 }
 
 .card-table {
+  margin-top: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
