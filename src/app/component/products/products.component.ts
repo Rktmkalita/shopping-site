@@ -9,13 +9,14 @@ import { ApiService } from 'src/app/service/api.service';
 })
 export class ProductsComponent implements OnInit {
   public productList: any;
+  public filterList: any;
   public searchKey: string = '';
   constructor(private api: ApiService, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.api.getProducts().subscribe((res: any) => {
       this.productList = res;
-
+      this.filterList = res;
       this.productList.forEach((a: any) => {
         if (
           a.category === "men's clothing" ||
@@ -34,5 +35,13 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: any) {
     this.cartService.addToCart(product);
+  }
+
+  filter(category: string) {
+    this.filterList = this.productList.filter((a: any) => {
+      if (a.category == category || category == '') {
+        return a;
+      }
+    });
   }
 }
