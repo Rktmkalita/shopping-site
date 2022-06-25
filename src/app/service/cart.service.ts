@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
   public cartList: any = [];
   public productList = new BehaviorSubject<any>([]); //Requires an initial value and emits the current value to new subscribers
+  public search = new BehaviorSubject<string>('');
+
   constructor() {}
 
   getProducts() {

@@ -8,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   public cartSize: number = 0;
+  public searchTerm: string = '';
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.getProducts().subscribe((a) => {
       this.cartSize = a.length;
     });
+  }
+  search(event: any) {
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    this.cartService.search.next(this.searchTerm);
   }
 }

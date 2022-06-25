@@ -4,7 +4,13 @@
       <i style="font-size: 40px" class="fas fa-shipping-fast">&nbsp; </i>
       <strong style="font-size: 30px">ShopNow</strong>
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="search product" />
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="searchTerm"
+          (keyup)="search($event)"
+          placeholder="search product"
+        />
         <button type="submit" class="btn btn-primary">
           <span class="fas fa-search search-icon"></span>
         </button>
